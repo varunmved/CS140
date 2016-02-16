@@ -7,8 +7,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 
-
 def useless_sort(a):
+    c = 0
+    
     #check
     al = len(a)
     if al < 3:
@@ -21,6 +22,16 @@ def useless_sort(a):
     a0 = a[0:first_third]
     a1 = a[first_third+1:second_third]
     a2 = a[second_third+1:]
+   
+    #n^2
+
+    for i in a1:
+        for j in a1:
+            c=(i+j)
+    
+    for i in a2:
+        for j in a2:
+            c=(i+j)
     
     #do 2 sorts of n/3 length
     useless_sort(a1)
@@ -28,26 +39,19 @@ def useless_sort(a):
 
 a = [1,2,3]
 x_axis = [1,2,3]
-#y_axis = [1455578571.091253,1455578571.091253,1455578571.091253]
 y_axis = [0,0,0]
-c = 0
 total = 0
-for i in xrange(4,600):
+for i in xrange(4,400):
     a.append(i)
     x_axis.append(i)
-    #n^2
     start = time.time()
     useless_sort(a)
-    for i in a:
-        for j in a:
-            c+=(i+j)
     end = time.time()
     total+=(end-start)
     y_axis.append(end-start)
 
-plt.plot(x_axis,y_axis)
-plt.show()
-print(x_axis)
-print(y_axis)
-print(c)
+#plt.plot(x_axis,y_axis)
+#plt.show()
+#print(x_axis)
+#print(y_axis)
 print(total)
